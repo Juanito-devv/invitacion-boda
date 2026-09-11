@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bárbara &amp; · Nuestra Boda</title>
-  <meta name="description" content="Invitación a la boda de Bárbara. Estás invitado a compartir este mágico momento con nosotros." />
+  <title>Ángel &amp; Bárbara · Nuestra Boda</title>
+  <meta name="description" content="Invitación a la boda de Ángel y Bárbara. Estás invitado a compartir este mágico momento con nosotros." />
   <meta name="theme-color" content="#D07A35" />
   <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="%23D07A35"/><text x="8" y="11" font-size="9" text-anchor="middle" fill="%23F5EFE6" font-family="Georgia">B</text></svg>' />
 
@@ -356,9 +356,9 @@
             <span class="eyebrow">Celebramos el amor</span>
           </div>
           <h1 class="names">
-            <span id="nombre-novia">Bárbara</span>
+            <span class="novio" id="nombre-novio">Ángel</span>
             <span class="amp">&amp;</span>
-            <span class="novio" id="nombre-novio">?</span>
+            <span id="nombre-novia">Bárbara</span>
           </h1>
           <p class="quote">“Junto a quienes amamos, comenzamos este nuevo capítulo.”</p>
           <a class="scroll-cue" href="#invitacion">
@@ -464,10 +464,10 @@
     const $ = (id) => document.getElementById(id);
 
     function aplicar() {
-      document.title = BODA.novia + ' & ' + (BODA.novio === '?' ? '' : BODA.novio) + ' · Nuestra boda';
+      document.title = BODA.novio + ' & ' + BODA.novia + ' · Nuestra boda';
       $('nombre-novia').textContent = BODA.novia;
       $('nombre-novio').textContent = BODA.novio;
-      const ini = BODA.novia + ' & ' + BODA.novio;
+      const ini = BODA.novio + ' & ' + BODA.novia;
       $('cabecera-iniciales').textContent = ini;
       $('pie-nombre').textContent = ini;
       $('cabecera-fecha').textContent = BODA.fecha;
