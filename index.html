@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bárbara &amp; · Nuestra Boda</title>
+  <meta name="description" content="Invitación a la boda de Bárbara. Estás invitado a compartir este mágico momento con nosotros." />
+  <meta name="theme-color" content="#6B2C3E" />
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="%236B2C3E"/><text x="8" y="11" font-size="9" text-anchor="middle" fill="%23F5EFE6" font-family="Georgia">B</text></svg>' />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #F5EFE6;
+      --paper: #FBF7F0;
+      --wine: #6B2C3E;
+      --wine-deep: #4F1628;
+      --wine-soft: #8E495B;
+      --blush: #E7C8CE;
+      --olive: #7C8B6E;
+      --olive-soft: #A9B79B;
+      --ink: #3E2E2A;
+      --line: rgba(107, 44, 62, 0.16);
+      --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+      overscroll-behavior: none;
+    }
+
+    ::selection { background: var(--blush); color: var(--wine-deep); }
+
+    img { display: block; max-width: 100%; }
+
+    /* ---------- Cabecera ---------- */
+    .site-header {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem clamp(1.25rem, 5vw, 3rem);
+      background: linear-gradient(to bottom, rgba(245, 239, 230, 0.92), rgba(245, 239, 230, 0.55));
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .site-header .iniciales {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
+      color: var(--wine);
+    }
+    .site-header .fecha {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--wine-soft);
+    }
+
+    /* ---------- Utilidades ---------- */
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--wine-soft);
+    }
+    .divider {
+      width: min(78%, 720px);
+      height: 1px;
+      margin-inline: auto;
+      background: linear-gradient(to right, transparent, var(--line), transparent);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 6.5rem clamp(1.25rem, 6vw, 4rem) 4rem;
+    }
+    .hero-grid {
+      width: 100%;
+      max-width: 1120px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 4rem;
+      align-items: center;
+    }
+    .photo { display: flex; justify-content: center; }
+    .arch {
+      position: relative;
+      width: clamp(250px, 40vw, 390px);
+      aspect-ratio: 3 / 4.45;
+      border-radius: 999px 999px 12px 12px;
+      border: 1.5px solid var(--wine);
+      overflow: hidden;
+      background: radial-gradient(120% 95% at 50% 0%, #F1E4EA 0%, #DCC7CD 52%, #C4ADB5 100%);
+      box-shadow: 0 24px 60px -24px rgba(107, 44, 62, 0.35);
+    }
+    .arch img, .oval img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+    .arch:hover img, .oval:hover img { transform: scale(1.045); }
+    .arch img.broken, .oval img.broken { display: none; }
+    .sprig {
+      position: absolute;
+      z-index: 5;
+      width: clamp(5.5rem, 9vw, 8rem);
+      pointer-events: none;
+      filter: drop-shadow(0 3px 8px rgba(107, 44, 62, 0.12));
+    }
+    .sprig--left { bottom: -1.4rem; left: -2rem; }
+    .sprig--right { bottom: -1.5rem; right: -2rem; transform: scaleX(-1); }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1.7rem;
+      align-items: flex-start;
+    }
+    .hero-text .eyebrow-row { display: flex; align-items: center; gap: 1rem; }
+    .hero-text .tic { width: 2rem; height: 1px; background: var(--wine-soft); opacity: 0.6; }
+    .names {
+      font-family: var(--serif);
+      font-weight: 500;
+      color: var(--wine);
+      line-height: 0.98;
+      font-size: clamp(3rem, 8vw, 5.4rem);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .names .amp { font-style: italic; font-weight: 400; color: var(--wine-soft); padding-inline: clamp(0.1rem, 2vw, 0.6rem); }
+    .names .novio { font-style: italic; color: var(--wine-soft); }
+    .quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--wine-soft);
+      line-height: 1.7;
+      max-width: 30ch;
+    }
+    .scroll-cue {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--wine-soft);
+      text-decoration: none;
+      border-bottom: 1px solid var(--wine-soft);
+      padding-bottom: 0.35rem;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .scroll-cue:hover { color: var(--wine); border-color: var(--wine); }
+    .scroll-cue .chev { display: inline-block; transition: transform 0.3s ease; }
+    .scroll-cue:hover .chev { transform: translateY(3px); }
+
+    /* ---------- Sección invitación ---------- */
+    .details {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 5rem clamp(1.25rem, 6vw, 4rem) 4rem;
+    }
+    .details-grid {
+      width: 100%;
+      max-width: 1120px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 4rem;
+      align-items: center;
+    }
+    .details-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      order: 2;
+    }
+    .details-text .eyebrow { margin-bottom: -1.2rem; }
+    .details-text h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
+      line-height: 1.18;
+      color: var(--wine);
+      max-width: 18ch;
+    }
+    .meta { max-width: 460px; }
+    .meta-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1rem 0.2rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .meta-row .lbl {
+      flex-shrink: 0;
+      width: 6.5rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--wine);
+    }
+    .meta-row .val { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+    .meta-row .val.canal { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--wine); font-family: var(--sans); font-weight: 400; font-size: 0.8rem; letter-spacing: 0.06em; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 0.6rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem 1.8rem;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+    }
+    .btn svg { width: 15px; height: 15px; fill: currentColor; }
+    .btn--solid {
+      background: var(--wine);
+      color: #FDFAF6;
+      box-shadow: 0 14px 28px -14px rgba(107, 44, 62, 0.55);
+    }
+    .btn--solid:hover { background: var(--wine-deep); transform: translateY(-1px); }
+    .btn--ghost { border-color: var(--wine); color: var(--wine); }
+    .btn--ghost:hover { background: rgba(107, 44, 62, 0.05); }
+
+    .oval {
+      position: relative;
+      width: clamp(230px, 36vw, 350px);
+      aspect-ratio: 3 / 4;
+      border-radius: 50%;
+      border: 1.5px solid var(--wine);
+      overflow: hidden;
+      background: radial-gradient(120% 95% at 50% 0%, #F1E4EA 0%, #DCC7CD 52%, #C4ADB5 100%);
+      box-shadow: 0 24px 60px -24px rgba(107, 44, 62, 0.35);
+      margin-inline: auto;
+    }
+    .photo.oval-side { order: 1; align-items: center; }
+
+    /* ---------- Footer ---------- */
+    .site-footer {
+      width: 100%;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      background: rgba(107, 44, 62, 0.04);
+    }
+    .site-footer .u {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--wine);
+      letter-spacing: 0.03em;
+    }
+    .site-footer .tagline {
+      margin-top: 0.5rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--wine-soft);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 840px) {
+      .hero-grid, .details-grid { grid-template-columns: 1fr; gap: 2.6rem; }
+      .hero { padding-top: 5.5rem; }
+      .details { padding-top: 4rem; }
+      .photo { order: 2; }
+      .hero-text { order: 1; align-items: center; text-align: center; }
+      .hero-text .eyebrow-row { justify-content: center; }
+      .hero-text .quote { margin-inline: auto; }
+      .names { white-space: normal; }
+      .scroll-cue { margin-inline: auto; }
+      .details-text { order: 2; align-items: center; text-align: center; }
+      .details-text h2 { margin-inline: auto; }
+      .meta { margin-inline: auto; text-align: left; width: 100%; max-width: 420px; }
+      .btn-row { justify-content: center; }
+      .photo.oval-side { order: 1; }
+      .details-text { gap: 1.8rem; }
+    }
+
+    /* ---------- Reveal ---------- */
+    [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 1s ease, transform 1s ease; }
+    [data-reveal].in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      [data-reveal] { opacity: 1; transform: none; transition: none; }
+      .arch img, .oval img { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <span class="iniciales" id="cabecera-iniciales">B &amp; ?</span>
+    <span class="fecha" id="cabecera-fecha"></span>
+  </header>
+
+  <!-- ============ SECCIÓN 1 · HERO ============ -->
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <!-- FOTO EN ARCO -->
+        <div class="photo" data-reveal>
+          <figure class="arch">
+            <img id="foto-arco" alt="Fotografía de la pareja" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgyjSxtYIhYRWF0eylRMZ005Wt4qUN3MyDTdxYei09uoBhj08WKczLKh78jTE2VR6-nCrVaG_QiIZIyIOEbIgvLu7RvVtfJeQHTq0KKdF-A5RS_oANEZqbjLkZLey_8arDeNfbrcvoZLb4bincQrQ40LnOOUAp0sN-VWtk8uPpQ9e633KprBClEBs0phHzZnFxUwhpcqC6C9-x8Mu6fkCUuSStRMu1z-3Pf7c9itfrN3Y4vW3YCrhz" />
+            <svg class="sprig sprig--left" viewBox="0 0 120 130" fill="none" aria-hidden="true">
+              <path d="M10 122 C 30 96, 46 74, 62 44" stroke="#7C8B6E" stroke-width="2.4" stroke-linecap="round" opacity="0.75"/>
+              <path d="M26 104 C 18 86, 20 72, 30 70" stroke="#7C8B6E" stroke-width="2" stroke-linecap="round" fill="#A9B79B" fill-opacity="0.30" opacity="0.85"/>
+              <path d="M42 88 C 34 70, 36 56, 46 54" stroke="#7C8B6E" stroke-width="2" stroke-linecap="round" fill="#A9B79B" fill-opacity="0.30" opacity="0.85"/>
+              <path d="M16 112 C 34 96, 44 86, 52 82" stroke="#7C8B6E" stroke-width="2" stroke-linecap="round" fill="#A9B79B" fill-opacity="0.35" opacity="0.8"/>
+              <path d="M58 56 C 52 42, 58 34, 68 36" stroke="#7C8B6E" stroke-width="2" stroke-linecap="round" fill="#A9B79B" fill-opacity="0.30" opacity="0.8"/>
+              <circle cx="72" cy="52" r="6" fill="#E7C8CE"/>
+              <circle cx="78" cy="42" r="4.5" fill="#DFAEB8"/>
+              <circle cx="86" cy="54" r="5" fill="#EFD9DD"/>
+              <path d="M94 46 l3 2 -3 2 -2 -2z" fill="#7C8B6E" opacity="0.6"/>
+            </svg>
+          </figure>
+        </div>
+
+        <!-- TEXTO HERO -->
+        <div class="hero-text" data-reveal>
+          <div class="eyebrow-row">
+            <span class="tic"></span>
+            <span class="eyebrow">Celebramos el amor</span>
+          </div>
+          <h1 class="names">
+            <span id="nombre-novia">Bárbara</span>
+            <span class="amp">&amp;</span>
+            <span class="novio" id="nombre-novio">?</span>
+          </h1>
+          <p class="quote">“Junto a quienes amamos, comenzamos este nuevo capítulo.”</p>
+          <a class="scroll-cue" href="#invitacion">
+            <span>Desliza para ver la invitación</span>
+            <span class="chev">&#8595;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ============ SECCIÓN 2 · INVITACIÓN ============ -->
+    <section class="details" id="invitacion">
+      <div class="details-grid">
+        <!-- TEXTO -->
+        <div class="details-text" data-reveal>
+          <span class="eyebrow">Invitación formal</span>
+          <h2>Estás invitado a compartir este mágico momento con nosotros</h2>
+
+          <div class="meta">
+            <div class="meta-row">
+              <span class="lbl">Fecha</span>
+              <span class="val" id="campo-fecha"></span>
+            </div>
+            <div class="meta-row">
+              <span class="lbl">Hora</span>
+              <span class="val" id="campo-hora"></span>
+            </div>
+            <div class="meta-row">
+              <span class="lbl">Ceremonia</span>
+              <span class="val canal" id="campo-canal"></span>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn btn--solid" id="btn-live" href="#" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span>Ver la ceremonia en vivo</span>
+            </a>
+            <a class="btn btn--ghost" id="btn-rsvp" href="#" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5v-6.5l-10 5-10-5V17z"/></svg>
+              <span>Confirmar asistencia</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FOTO OVAL -->
+        <div class="photo oval-side" data-reveal>
+          <figure class="oval">
+            <img id="foto-oval" alt="Fotografía íntima de la pareja" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhxKGAs2fYvp8jNyPkjhzG2vcJyyVpEDoP32oULrXPASAURmVW4DC3K1a7YyT21S7QvdT7nKeWPhmvtBlrqXT329p3M5buAfx-hlOTs3uFoo8WG0uA5E_tz_74EJHW9_pSFNZ5G5Z-bmBtGIMQZEa6DoDlqC1ej29ISywWO1pYqELJAs2e1q3qiav0-OSWEc7QppNcxDr9MFh-sKmhibvWwsCkaYIQY4kmo64dYvazzH_k6BMRAICV" />
+            <svg class="sprig sprig--right" viewBox="0 0 120 130" fill="none" aria-hidden="true">
+              <path d="M10 122 C 30 96, 46 74, 62 44" stroke="#7C8B6E" stroke-width="2.4" stroke-linecap="round" opacity="0.75"/>
+              <path d="M26 104 C 18 86, 20 72, 30 70" stroke="#7C8B6E" stroke-width="2" stroke-linecap="round" fill="#A9B79B" fill-opacity="0.30" opacity="0.85"/>
+              <path d="M42 88 C 34 70, 36 56, 46 54" stroke="#7C8B6E" stroke-width="2" stroke-linecap="round" fill="#A9B79B" fill-opacity="0.30" opacity="0.85"/>
+              <path d="M16 112 C 34 96, 44 86, 52 82" stroke="#7C8B6E" stroke-width="2" stroke-linecap="round" fill="#A9B79B" fill-opacity="0.35" opacity="0.8"/>
+              <path d="M58 56 C 52 42, 58 34, 68 36" stroke="#7C8B6E" stroke-width="2" stroke-linecap="round" fill="#A9B79B" fill-opacity="0.30" opacity="0.8"/>
+              <circle cx="72" cy="52" r="6" fill="#E7C8CE"/>
+              <circle cx="78" cy="42" r="4.5" fill="#DFAEB8"/>
+              <circle cx="86" cy="54" r="5" fill="#EFD9DD"/>
+              <path d="M94 46 l3 2 -3 2 -2 -2z" fill="#7C8B6E" opacity="0.6"/>
+            </svg>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="u" id="pie-nombre">Bárbara &amp; ?</p>
+    <p class="tagline">Con amor, de parte de nuestras familias</p>
+  </footer>
+
+  <script>
+    /*
+      ─────────────────────────────────────────────
+      TODO SE EDITA AQUÍ (una sola vez, y se sube a GitHub):
+      - novio      → el nombre del novio (hoy está el "?").
+      - fecha/hora → el día y hora de la ceremonia.
+      - youtube    → el enlace de la transmisión en vivo.
+      - forms      → el enlace del formulario de confirmación.
+      - fotoArco / fotoOval → las fotos reales de la pareja
+        (puedes usar archivos propios: "fotos/novios.jpg").
+      ─────────────────────────────────────────────
+    */
+    const BODA = {
+      novia: 'Bárbara',
+      novio: '?',                                   // ← nombre del novio
+      fecha: 'Sábado, 18 de octubre',                // ← fecha
+      hora: '5:00 p. m.',                            // ← hora
+      canal: '<span class="ico"></span>Vía YouTube Live',
+      youtube: 'https://www.youtube.com/live/',      // ← enlace del live
+      forms: 'https://forms.gle/',                   // ← enlace del RSVP
+      fotoArco: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDgyjSxtYIhYRWF0eylRMZ005Wt4qUN3MyDTdxYei09uoBhj08WKczLKh78jTE2VR6-nCrVaG_QiIZIyIOEbIgvLu7RvVtfJeQHTq0KKdF-A5RS_oANEZqbjLkZLey_8arDeNfbrcvoZLb4bincQrQ40LnOOUAp0sN-VWtk8uPpQ9e633KprBClEBs0phHzZnFxUwhpcqC6C9-x8Mu6fkCUuSStRMu1z-3Pf7c9itfrN3Y4vW3YCrhz',
+      fotoOval: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBhxKGAs2fYvp8jNyPkjhzG2vcJyyVpEDoP32oULrXPASAURmVW4DC3K1a7YyT21S7QvdT7nKeWPhmvtBlrqXT329p3M5buAfx-hlOTs3uFoo8WG0uA5E_tz_74EJHW9_pSFNZ5G5Z-bmBtGIMQZEa6DoDlqC1ej29ISywWO1pYqELJAs2e1q3qiav0-OSWEc7QppNcxDr9MFh-sKmhibvWwsCkaYIQY4kmo64dYvazzH_k6BMRAICV'
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    function aplicar() {
+      document.title = BODA.novia + ' & ' + (BODA.novio === '?' ? '' : BODA.novio) + ' · Nuestra boda';
+      $('nombre-novia').textContent = BODA.novia;
+      $('nombre-novio').textContent = BODA.novio;
+      const ini = BODA.novia + ' & ' + BODA.novio;
+      $('cabecera-iniciales').textContent = ini;
+      $('pie-nombre').textContent = ini;
+      $('cabecera-fecha').textContent = BODA.fecha;
+      $('campo-fecha').textContent = BODA.fecha;
+      $('campo-hora').textContent = BODA.hora;
+      $('campo-canal').innerHTML = BODA.canal;
+      $('btn-live').setAttribute('href', BODA.youtube);
+      $('btn-rsvp').setAttribute('href', BODA.forms);
+      const a = $('foto-arco'), o = $('foto-oval');
+      a.setAttribute('src', BODA.fotoArco);
+      o.setAttribute('src', BODA.fotoOval);
+      const broke = (img) => { img.classList.add('broken'); };
+      a.addEventListener('error', () => broke(a), { once: true });
+      o.addEventListener('error', () => broke(o), { once: true });
+    }
+
+    document.addEventListener('DOMContentLoaded', aplicar);
+
+    /* Anclas con desplazamiento suave */
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const id = anchor.getAttribute('href');
+        if (id && id.length > 1) {
+          const el = document.querySelector(id);
+          if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+        }
+      });
+    });
+
+    /* Aparición sutil al hacer scroll */
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in'));
+    }
+  </script>
+</body>
+</html>
