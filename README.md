@@ -1,4 +1,4 @@
-# Invitación web — Boda de Bárbara
+# Invitación web — Boda de Ángel & Bárbara
 
 Página de invitación de boda de una sola página con scroll, estilo editorial romántico minimalista: fondo crema, acentos naranja terracota y detalles florales en acuarela (albaricoque y verde oliva).
 
@@ -18,7 +18,7 @@ Todo se edita en **un solo lugar**: al final de `index.html`, el bloque `const B
 | Otros países | `zonas: '...'` | `zonas: 'Argentina 12:45 · Venezuela 11:45 · Colombia 10:45 · España 5:45 p. m.'` |
 | Fecha | `fecha: '...'` | `fecha: 'Sábado, 12 de septiembre de 2026'` |
 | Hora | `hora: '...'` | `hora: '12:45 p. m. · hora de Chile'` |
-| Enlace de la transmisión | `youtube: '...'` | `youtube: 'https://www.youtube.com/live/xxxx'` |
+| Enlace de la videollamada | `meet: '...'` | `meet: 'https://meet.google.com/xxxx'` |
 | Formulario de asistencia | `forms: '...'` | `forms: 'https://forms.gle/xxxx'` |
 | Fotos de la pareja | `fotoArco: '...'` y `fotoOval: '...'` | `fotoArco: 'Boda1.jpeg'` |
 
